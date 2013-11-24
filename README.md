@@ -18,5 +18,5 @@ REST API setup
 
 Angular files are static files from web-server point of view. REST API is called thru /chat-api/xxx urls with GET and POST methods.
 
-Django app serves angular files when in debug mode. It uses standard Djando authentication. Create chat rooms and manage users with Django admin.
+Django app serves angular files when in debug mode. It uses standard Django authentication. Create chat rooms and manage users with Django admin.
 
