@@ -1,0 +1,24 @@
+<div class="row-fluid">
+ <div class="span4 left-col">
+    <h2>Lobby</h2>
+    <p>Newest messages by room</p>
+ </div>
+
+ <div class="span6 right-col">
+  <div ng-repeat="room in newest">
+   <table class="table table-condensed">
+    <thead>
+        <tr><td colspan=3><strong>{{room.name}}</strong></td></tr>
+    </thead>
+    <tbody ng-repeat="entry in room.newest">
+        <tr>
+            <td><img ng-src="{{entry.writer.img}}" height="25" width="25"/></td>
+            <td>{{entry.writer.name}}</td>
+            <td>{{entry.content}}</td>
+        </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+
+</div>

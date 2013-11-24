@@ -1,0 +1,83 @@
+
+body {
+    padding-top:40px;
+}
+
+#mblogger-container {
+	margin:0 auto;
+	width:90%; 
+    background: beige;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li input {
+	line-height: 1.3;
+	width: 90%;
+	margin-top: 10px;
+	margin-left:2%;
+}
+.left-col {
+    float:left;
+}
+.right-col {
+    float:right;
+}
+.message-box {
+    font-size:0.9em;
+    margin-top:5px;
+    padding:10px;
+    background: white;
+    box-shadow: 1px 1px 2px rgba(black, 0.2);
+    border-radius: 5px;
+    display:inline-block;
+}
+
+.chat-box {
+    padding:10px;
+	background: white;
+	margin-top:5px;
+    box-shadow: 1px 1px 2px rgba(black, 0.2);
+    border-radius: 5px;
+    display:inline-block;
+}
+.box-wrapper {
+    position:relative;
+}
+.thumb-left {
+    display:inline-block;
+    vertical-align:top;
+    margin-top:5px;
+    border-radius: 5px;
+}
+.thumb-right {
+    display:inline-block;
+    vertical-align:top;
+    margin-top:5px;
+    border-radius: 5px;
+}
+.message-box >div {
+    padding-left:5px;
+    margin-bottom:0px;
+}
+.message-box > p {
+    padding-left:5px;
+}
+.post-container {
+    margin-top: 10px;
+}
+.in-line {
+    display:inline;
+}
+.header-links{
+         color: #0088CC;
+         font-size: 10px;
+         float:right;
+         padding-right:20px;
+         margin-top:10px;
+}
+.inline-header {
+        display: inline-block;
+}

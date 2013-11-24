@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="chatApp" ng-controller="MainCtrl">
+<head>
+  <meta charset="utf-8">
+  <title>Angular chat {{sel.sel}}</title>
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <script src="lib/jquery/jquery-1.10.2.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+
+  <script src="js/chat.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/directives.js"></script>
+</head>
+
+<body>
+<div id="mblogger-container" class="container">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li ng-class="{active:sel.sel=='lobby'}">
+                    <a ng-href="#lobby" ng-click="sel.sel='lobby'">lobby</a>
+                </li>
+                <li ng-repeat="room in rooms" ng-class="{active:sel.sel==room.name}">
+                    <a ng-href="#/room/{{room.id}}" ng-click="sel.id = room.id; sel.sel=room.name;">{{room.name}}</a>
+                </li>
+            </ul>
+            <div class="header-links inline-header">
+                <p>
+                    <span>Welcome {{user.short_name || user.username}} </span>
+                    <a class="account-link" href="/account/">Settings</a>
+                    <span> / </span><a href="/logout/">Logout</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="messagesList" app-messages></div>
+    <div ng-view id="chat-container" class="row-fluid"></div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/chat/css/bootstrap.css">
+</head>
+<body>
+<div class="row-fluid">
+<br><br>
+
+<div class="offset1">
+<form class="form-horizontal" action="{% url "account_view" %}" method="post" enctype="multipart/form-data">
+    <legend>Update Your Personal Settings</legend>
+    {% csrf_token %}
+    {% for field in form.hidden_fields %}
+        {{field}}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+        {{ field.errors }}
+        <div class="control-group">
+            <label class="control-label">{{ field.label }}</label>
+            <div class="controls">
+                {{ field }}
+                {% if field.help_text %}
+                    <p><small>{{ field.help_text }}</small></p>
+                {% endif %}
+                {% if field.label == form.img.label %}
+                    {% if img %}
+                        <br>Currently selected: <a href="{{ img.url }}">{{ img.name }}</a>
+                    {% else %}
+                        <br>No profile image uploaded yet
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="control-group">
+      <div class="controls">
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        <a class="btn" href="/chat/index.html">Cancel</a>
+      </div>
+    </div>
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/chat/css/bootstrap.css">
+</head>
+<body>
+<div class="row-fluid">
+<br><br>
+    <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+        <legend><span style="margin-left:10%;">Login</span></legend>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="control-group">
+            {{ form.username.errors }}
+            <label class="control-label" for="id_username">{{form.username.label}}</label>
+            <div class="controls">
+                {{ form.username }}
+                <p>{{form.username.help_text}}</p>
+            </div>
+        </div>
+        <div class="control-group">
+            {{ form.password.errors }}
+            <label class="control-label" for="id_password">{{form.password.label}}</label>
+            <div class="controls">
+                {{ form.password }}
+                <p>{{form.password.help_text}}</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+</div>
+</body>
+</html>

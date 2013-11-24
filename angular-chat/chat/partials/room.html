@@ -1,0 +1,16 @@
+
+<div id="message-container" when-scrolled="loadMore()">
+
+<div class="input-append post-container row-fluid">
+    <input class="span10 offset1" type="text" ng-model="newMsg"/>
+    <button class="btn" ng-click="newPost()">Post</button>
+</div>
+
+<div ng-repeat="messages in pages">
+    <ul id="message-area" class="row-fluid">
+        <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'" autoscroll>
+        </li>
+    </ul>
+</div>
+
+</div>

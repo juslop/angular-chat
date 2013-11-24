@@ -1,0 +1,11 @@
+<div class="box-wrapper">
+    <img ng-src="{{message.writer.img}}" class="thumb-left" width="25" height="25">
+    <div class="message-box">
+        <p><span>{{message.writer.name}}: </span><span>{{message.content}}</span>
+        <span><new-comment current="comment" msg="message" cb="newComment"></new-comment></span></p>
+    </div>
+</div>
+<ul ng:model="message.children">
+    <li ng-repeat="message in message.children | orderBy:'-id'" ng-include="'partials/msg-node.html'">
+    </li>
+</ul>
