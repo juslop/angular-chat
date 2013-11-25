@@ -37,6 +37,10 @@ chatControllers.controller('MessageListCtrl', ['$scope', '$routeParams', '$timeo
             pageId: $scope.page},
             function() {
                 if (page.length) {
+                    //works close enough for tutorial.
+                    //if added dynamically posts handle paging offset
+                    page = page.slice(
+                        ($scope.pages[0].length % 10));
                     $scope.pages.push(page)
                     $timeout(function(){$scope.scroll.disabled = false;}, 1000);
                 }
@@ -71,7 +75,7 @@ chatControllers.controller('MessageListCtrl', ['$scope', '$routeParams', '$timeo
         if ($scope.comment.cmt) {
             var msg = new Message(dct);
             msg.$save({}, function(data) {
-            	console.log(data);
+            	console.log('new page received: ', data);
                 $scope.comment.curMsg.children.push(data);
                 $scope.close();
             }, function(errorData) {

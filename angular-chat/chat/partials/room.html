@@ -8,7 +8,7 @@
 
 <div ng-repeat="messages in pages">
     <ul id="message-area" class="row-fluid">
-        <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'" autoscroll>
+        <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'">
         </li>
     </ul>
 </div>
