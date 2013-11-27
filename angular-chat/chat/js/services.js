@@ -66,10 +66,10 @@ var chatErrors = angular
                             showMessage('You are not logged in or do not have permission for the data', 'alert-error', 20000);
                             break;
                         case 500:
-                            showMessage('Server internal error: ' + errorResponse.data, 'alert-error', 20000);
+                            showMessage('Server internal error: ' + errorResponse.data.slice(0,200), 'alert-error', 20000);
                             break;
                         default:
-                            showMessage('Failed to contact server ' + errorResponse.status + ': ' + errorResponse.data, 'alert-error', 20000);
+                            showMessage('Failed to contact server ' + errorResponse.status + ': ' + errorResponse.data.slice(0,200), 'alert-error', 20000);
                     }
                     return $q.reject(errorResponse);
                 });
