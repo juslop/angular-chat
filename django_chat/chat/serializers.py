@@ -20,7 +20,11 @@ class UserHandler(object):
         return '/chat/img/anonymous.png'
 
     def short_name(self, obj):
-        return obj.get_short_name() or obj.username
+        try:
+            n = obj.get_short_name()
+        except:
+            n = None
+        return n or obj.username
 
 
 class LobbySerializer(serializers.ModelSerializer):

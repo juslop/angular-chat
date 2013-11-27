@@ -4,7 +4,7 @@
 
 var chatDirectives = angular.module('chatDirectives', []);
 
-chatDirectives.directive('whenScrolled', ['$window', function($window) {
+chatDirectives.directive('whenScrolled', ['$window', '$timeout', function($window, $timeout) {
     return function(scope, elm, attr) {
         $window = angular.element($window);
         var handler = function() {
@@ -18,6 +18,13 @@ chatDirectives.directive('whenScrolled', ['$window', function($window) {
         scope.$on('$destroy', function() {
           return $window.off('scroll', handler);
         });
+        $timeout(function () {
+            console.log('window and doc heights', $window.height(), $('#chat-container').height());
+            if ($window.height() > $('#chat-container').height()) {
+                scope.scroll.disabled = true;
+                scope.$apply(attr.whenScrolled);
+            }
+        }, 250);
     };
 }]);
 
