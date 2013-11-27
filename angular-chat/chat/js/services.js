@@ -46,6 +46,7 @@ var chatErrors = angular
                 .fadeIn('fast')
                 .delay(time)
                 .fadeOut('fast', function() { $(this).remove(); })
+                .on('click', function() { $(this).remove(); })
                 .appendTo(elementsList)
                 .text(content);
         };
