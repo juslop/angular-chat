@@ -20,4 +20,4 @@ Angular files are static files from web-server point of view. REST API is called
 
 Django app serves angular files when in debug mode. It uses standard Django authentication. Create chat rooms and manage users with Django admin. Note: Django login and user account view are still in old school format in separate pages.
 
-Rest API app requires with Django 1.5, Django rest framework 2.3.9, Python 2.7 and PIL
+Rest API app requires Django 1.5, Django rest framework 2.3.9, Python 2.7 and PIL
