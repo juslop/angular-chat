@@ -7,7 +7,7 @@
 </div>
 
 <div ng-repeat="messages in pages">
-    <ul id="message-area" class="row-fluid">
+    <ul class="row-fluid">
         <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'" ng-init="counter=1">
         </li>
     </ul>
