@@ -1,5 +1,5 @@
 
-<div id="message-container" when-scrolled="loadMore()">
+<div id="message-container" when-scrolled="loadMore()" ng:model="counter">
 
 <div class="input-append post-container row-fluid">
     <input class="span10 offset1" type="text" ng-model="newMsg"/>
@@ -8,7 +8,7 @@
 
 <div ng-repeat="messages in pages">
     <ul id="message-area" class="row-fluid">
-        <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'">
+        <li ng-repeat="message in messages | orderBy: '-id'" ng-include="'partials/msg-node.html'" ng-init="counter=1">
         </li>
     </ul>
 </div>

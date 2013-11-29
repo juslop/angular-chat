@@ -4,14 +4,18 @@
 
 var chatDirectives = angular.module('chatDirectives', []);
 
-chatDirectives.directive('whenScrolled', ['$window', '$timeout', function($window, $timeout) {
+chatDirectives.directive('whenScrolled', ['$window', '$timeout', '$rootScope', function($window, $timeout, $rootScope) {
     return function(scope, elm, attr) {
         $window = angular.element($window);
         var handler = function() {
             if (!scope.scroll.disabled && ($window.scrollTop() +
                 $window.height() > $(document).height() - 50)) {
                 scope.scroll.disabled = true;
-                scope.$apply(attr.whenScrolled);
+                if ($rootScope.$$phase) {
+                    return scope.eval(attr.whenScrolled);
+                } else {
+                    return scope.$apply(attr.whenScrolled);
+                }
             }
         };
         $window.on('scroll', handler);
@@ -22,7 +26,11 @@ chatDirectives.directive('whenScrolled', ['$window', '$timeout', function($windo
             console.log('window and doc heights', $window.height(), $('#chat-container').height());
             if ($window.height() > $('#chat-container').height()) {
                 scope.scroll.disabled = true;
-                scope.$apply(attr.whenScrolled);
+                if ($rootScope.$$phase) {
+                    return scope.eval(attr.whenScrolled);
+                } else {
+                    return scope.$apply(attr.whenScrolled);
+                }
             }
         }, 250);
     };
@@ -34,6 +42,7 @@ chatDirectives.directive("newComment", function($compile) {
         scope: {
     		msg:"=",
     		current:"=",
+                cnt:"=", //limits recursion depth in comments
     		cb:"="
 		},
        	template: '<button><i class="icon-comment" ' +

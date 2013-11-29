@@ -2,10 +2,10 @@
     <img ng-src="{{message.writer.img}}" class="thumb-left" width="35" height="35">
     <div class="message-box">
         <p><span>{{message.writer.name}}: </span><span>{{message.content}}</span>
-        <span><new-comment current="comment" msg="message" cb="newComment"></new-comment></span></p>
+        <span><new-comment cnt="counter" current="comment" msg="message" cb="newComment"  ng-hide="cnt > 7"></new-comment></span></p>
     </div>
 </div>
 <ul ng:model="message.children">
-    <li ng-repeat="message in message.children | orderBy:'-id'" ng-include="'partials/msg-node.html'">
+    <li ng-repeat="message in message.children | orderBy:'-id'" ng-include="'partials/msg-node.html'" ng-init="counter=counter+1">
     </li>
 </ul>
