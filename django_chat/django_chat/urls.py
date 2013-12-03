@@ -1,13 +1,13 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
-from chat.views import AccountView
+from chat.views import AccountView, login
 import os
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'django.contrib.auth.views.login', {'template_name':'login.html'}),
+    url(r'^$', login, {'template_name':'login.html'}),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^account/$', AccountView.as_view(), name='account_view'),
 

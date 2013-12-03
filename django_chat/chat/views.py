@@ -6,18 +6,28 @@ from chat.serializers import RoomSerializer, LobbySerializer, UserSerializer, Me
 from rest_framework import views
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.edit import FormView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import login as contrib_login
+from django.conf import settings
 
+
+def login(request, **kwargs):
+    if request.user.is_authenticated():
+	print 'kusipaska'
+        return redirect(settings.LOGIN_REDIRECT_URL)
+    else:
+        return contrib_login(request, **kwargs)
 
 class LoginRequired(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoginRequired, self).dispatch(*args,**kwargs)
+
 
 class AuthView(object):
     permission_classes = (IsAuthenticated, )
