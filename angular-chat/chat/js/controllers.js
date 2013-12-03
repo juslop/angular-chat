@@ -39,8 +39,10 @@ chatControllers.controller('MessageListCtrl', ['$scope', '$routeParams', '$timeo
                 if (page.length) {
                     //works close enough for tutorial.
                     //if added dynamically posts handle paging offset
-                    page = page.slice(
-                        ($scope.pages[0].length % 10));
+                    if ($scope.pages[0].length > 10) {
+                        page = page.slice(
+                            ($scope.pages[0].length % 10));
+                    }
                     $scope.pages.push(page)
                     $timeout(function(){$scope.scroll.disabled = false;}, 1000);
                 }

@@ -5,9 +5,10 @@ module.exports = function(config){
     files : [
       'chat/lib/angular/angular.js',
       'chat/lib/angular/angular-*.js',
+      'chat/lib/jquery/jquery-*.js',
       'test/lib/angular/angular-mocks.js',
       'chat/js/*.js',
-      'test/unit/**/*.js'
+      'test/unit/*.js'
     ],
 
     exclude: ['chat/lib/angular/angular-scenario.js'],
@@ -16,12 +17,12 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['Safari'],
+    browsers : ['Firefox'],
 
     plugins : [
       'karma-junit-reporter',
-      //'karma-chrome-launcher',
-      'karma-safari-launcher',
+      'karma-chrome-launcher',
+      //'karma-safari-launcher',
       'karma-firefox-launcher',
       'karma-jasmine'
     ],
