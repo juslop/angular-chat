@@ -18,7 +18,6 @@ from django.conf import settings
 
 def login(request, **kwargs):
     if request.user.is_authenticated():
-	print 'kusipaska'
         return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         return contrib_login(request, **kwargs)
