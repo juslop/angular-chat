@@ -22,6 +22,7 @@ Rest API app requires Django 1.5, Django rest framework 2.3.9, Python 2.7 and PI
 
 Whole Django project is included, just clone this repo and go to django-chat folder and:
 > python manage.py syncdb 
+
 > python manage.py runserver
 
 Angular files are static files from web-server point of view. REST API is called thru /chat-api/xxx urls with GET and POST methods.
