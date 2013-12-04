@@ -7,7 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', login, {'template_name':'login.html'}),
+    url(r'^$', login, {'template_name':'login.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^account/$', AccountView.as_view(), name='account_view'),
 

@@ -7,7 +7,7 @@
 <body>
 <div class="row-fluid">
 <br><br>
-    <form class="form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    <form class="form-horizontal" method="post" action="{% url 'login' %}">
         <legend><span style="margin-left:10%;">Login</span></legend>
         {% csrf_token %}
         {{ form.non_field_errors }}

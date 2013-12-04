@@ -10,8 +10,8 @@
     <thead>
         <tr><td colspan=3><strong>{{room.name}}</strong></td></tr>
     </thead>
-    <tbody ng-repeat="entry in room.newest">
-        <tr>
+    <tbody>
+        <tr ng-repeat="entry in room.newest">
             <td><img ng-src="{{entry.writer.img}}" height="25" width="25"/></td>
             <td>{{entry.writer.name}}</td>
             <td>{{entry.content}}</td>
